@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f5ff;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            max-width: 90%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #3498db;
+            margin-top: 20px;
+            font-size: 1.5em;
+        }
+
+        p {
+            color: #34495e;
+            font-size: 1em;
+        }
+
+        ul {
+            color: #34495e;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1em;
+            font-family: 'Poppins', sans-serif;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            z-index: 0;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            padding: 2px;
+            border-radius: 7px;
+            background: linear-gradient(
+                90deg,
+                #ff0000,
+                #ffa500,
+                #ffff00,
+                #008000,
+                #0000ff,
+                #4b0082,
+                #ee82ee,
+                #ff0000
+            );
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            background-size: 400%;
+            z-index: -1;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        button:hover::before {
+            animation: borderRotate 3s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Tablet styles */
+        @media screen and (min-width: 768px) {
+            body {
+                max-width: 80%;
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+                margin-bottom: 30px;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            p {
+                font-size: 1.1em;
+            }
+        }
+
+        /* Desktop styles */
+        @media screen and (min-width: 1024px) {
+            body {
+                max-width: 800px;
+                padding: 40px;
+            }
+
+            h1 {
+                font-size: 3em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1.2em;
+            }
+
+            button {
+                padding: 12px 25px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+    <style>
+        @keyframes slideColor {
+            from {
+                clip-path: inset(0 100% 0 0);
+            }
+            to {
+                clip-path: inset(0 0 0 0);
+            }
+        }
+
+        .color-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            animation: slideColor 1s ease-out forwards;
+            z-index: -1;
+        }
+
+        /* Keep content above the sliding background */
+        h1, p, h2, ul, button {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Ensure button's hover effect stays on top */
+        button::before {
+            z-index: 2;
+        }
+    </style>
+    <script>
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function changeBackgroundColor() {
+            const newColor = getRandomColor();
+            const overlay = document.createElement('div');
+            overlay.className = 'color-overlay';
+            overlay.style.backgroundColor = newColor;
+            document.body.appendChild(overlay);
+
+            setTimeout(() => {
+                document.body.style.backgroundColor = newColor;
+                overlay.remove();
+            }, 1000);
+        }
+    </script>
+</head>
+<body>
+    <h1>About Me</h1>
+
+    <p>Hello! I'm Abbas, a passionate developer who loves to create and 
+        learn new technologies. I enjoy solving problems and building 
+        applications that make a difference in people's lives.</p>
+    
+    <h2>My Interests & Skills</h2>
+    <ul>
+        <li>Web Development - Creating responsive and user-friendly websites</li>
+        <li>Artificial Intelligence - Exploring machine learning and AI applications</li>
+        <li>Open Source - Contributing to and learning from the open source community</li>
+    </ul>
+    
+    <button onclick="changeBackgroundColor()" style="display: block;
+     margin: 20px auto; padding: 10px 20px;
+     font-size: 16px; font-family: 'Poppins', sans-serif;
+      background-color: #3498db; color: white;
+       border: none; border-radius: 5px; cursor: pointer;">
+        Change Background Color!
+    </button>
+</body>
+</html>
