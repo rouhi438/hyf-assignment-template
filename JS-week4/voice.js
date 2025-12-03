@@ -117,26 +117,12 @@ function getReply(command) {
   items = commandText.split(" ");
   return (
     nameReply(commandText) ||
-    numReply(commandText) ||
-    timeReply(commandText) ||
     todoReply(commandText) ||
     dateReply(commandText) ||
+    numReply(commandText) ||
+    timeReply(commandText) ||
     jokeReply(commandText) ||
     coinReply(commandText) ||
     "Sorry, i didn't understand that."
   );
 }
-
-// console.log(getReply("hello, my name is Abbas"));
-// console.log(getReply("what is my name?"));
-// console.log(getReply("add fishing to my todo"));
-// console.log(getReply("add football to my todo"));
-// console.log(getReply("what is on my todo"));
-// console.log(getReply("remove fishing from my todo"));
-// console.log(getReply("what is on my todo"));
-// console.log(getReply("what day is it today?"));
-// console.log(getReply("calculate 4 plus 3"));
-// console.log(getReply("calculate 3 ** 4"));
-// console.log(getReply("set a timer for 1 minutes"));
-// console.log(getReply("tell me a joke"));
-// console.log(getReply("flip a coin"));
