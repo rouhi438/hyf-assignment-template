@@ -8,7 +8,7 @@ SELECT  count(*) AS unValid FROM task WHERE due_date IS null
 SELECT *  FROM task WHERE status_id = 3;
 
 -- 4. Find all the tasks that are not marked as done.
-SELECT * FROM task WHERE status_id= 1;
+SELECT * FROM task WHERE status_id= !3;
 
 -- 5. Get all the tasks, sorted with the most recently created first.
 SELECT  * FROM  task ORDER BY created DESC 
