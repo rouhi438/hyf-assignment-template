@@ -1,17 +1,18 @@
 //
 import express from "express";
-import knex from "knex";
+import path from "path";
+import {
+  getUserByName,
+  getUsersCount,
+  getAllUsers,
+  getUserById,
+  getUserRandom,
+  addNewUser,
+  deleteUserById,
+} from "./userService.js";
 const port = 3000;
 const app = express();
 app.use(express.json());
-
-const knexInstance = knex({
-  client: "sqlite3",
-  connection: {
-    filename: "./Tasks.sqlite3",
-  },
-  useNullAsDefault: true,
-});
 
 //-- testing rout
 app.get("/", async (req, res) => {
@@ -20,112 +21,66 @@ app.get("/", async (req, res) => {
 
 //-- get HTML format
 app.get("/html", (req, res) => {
-  res.send(`<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-     <style>
-          body {
-            font-family: Arial;
-            background: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-          }
-          .box {
-            background: rgb(130, 236, 232);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
-            text-align: center;
-          }
-          h1 {
-            color: #333;
-          }
-          #count {
-            font-size: 48px;
-            font-weight: bold;
-            color: #4CAF50;
-            text-decoration: underline;
-             text-underline-offset: 10px;
-          }
-        </style>
-  </head>
-  <body>
-  <div class="box">
-          <h1>Total Users</h1>
-          <div id="count">Loading...</div>
-        </div>
-
-        <script>
-          fetch("/user-count")
-            .then(res => res.json())
-            .then(data => {
-              document.getElementById("count").innerText = data.count;
-            });
-        </script>
-  </body>
-</html>
-`);
+  res.sendFile(path.join(process.cwd(), "users.html"));
 });
 
-//-- getting user by Name;
+//-- getting user by Name
 app.get("/name/:name", async (req, res) => {
-  const name = req.params.name.toLowerCase();
-  const user = await knexInstance("user")
-    .where(knexInstance.raw("LOWER(name) =?", [name]))
-    .first();
+  const user = await getUserByName(req.params.name.toLowerCase());
   if (!user) return res.json("There is not this name in the user list!");
   res.send(user);
 });
 
 //-- getting count of users
 app.get("/user-count", async (req, res) => {
-  const total = await knexInstance("user").count("id as count");
-  res.json({ count: total[0].count });
+  const total = await getUsersCount();
+  res.json({ count: total });
 });
 
 //-- getting All users
 app.get("/all-users", async (req, res) => {
-  const users = await knexInstance("user");
-  res.send(users);
+  const users = await getAllUsers();
+  res.json(users);
 });
 
 //-- getting user by ID
 app.get("/user/:id", async (req, res) => {
-  const { id } = req.params;
-  const user = await knexInstance("user")
-    .where({ id: Number(id) })
-    .first();
-  if (!user) {
-    return res.json("User not found!!!");
-  }
-  res.send(user);
+  const userId = await getUserById(req.params.id);
+  if (!userId) return res.status(404).json({ error: "User not found!!!" });
+  res.json(userId);
 });
 
 //-- getting random user
 app.get("/random", async (req, res) => {
-  const users = await knexInstance("user");
+  const users = await getUserRandom();
   if (users.length === 0) {
     return res.status(404).json("User not found ☹️");
   }
-  const randomUser = Math.floor(Math.random() * users.length);
-  res.json(users[randomUser]);
+  res.json(users);
 });
 
 //-- adding new user
 app.post("/add", async (req, res) => {
   const { name, email, phone } = req.body;
-  const newUser = await knexInstance("user").insert({
-    name,
-    email,
-    phone,
+  if (!name || !email || !phone) {
+    return res.status(400).json({ error: "All fields are required" });
+  }
+  const newUser = await addNewUser({ name, email, phone });
+  res.status(201).json({
+    message: `New user added successfully with userID: ${newUser}`,
   });
-  res.json(`New user added successfully with userID: ${newUser[0]}`);
 });
+
+//-- deleting user by ID
+app.delete("/delete/:id", async (req, res) => {
+  const { id } = req.params;
+  const deleteUser = await deleteUserById(id);
+  if (deleteUser === 0) {
+    return res.status(404).json({ error: "User not found" });
+  }
+  res.json({ message: `User with id ${id} deleted successfully` });
+});
+
 app.listen(port, function () {
   console.log("Server is connected on http://localhost:3000");
 });
