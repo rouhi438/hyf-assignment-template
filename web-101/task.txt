@@ -1,0 +1,126 @@
+
+Recipe Collection 
+
+Architecture Diagram
+
+File: web-1.png
+
+Description: Shows flow from User -> Frontend -> Backend -> Database.
+
+Components
+
+User: interacts with the frontend
+
+Frontend: UI, sends HTTP requests to backend
+
+Backend: handles requests and processes data
+
+Database: stores recipe data
+
+////////////////////////
+
+Adding a New Recipe
+
+File: web-2.png
+
+Flow:
+
+User clicks on Add Recipe button
+
+Frontend sends POST /recipes
+
+Backend saves data to database
+
+Backend sends success response
+
+Frontend updates the page
+
+//////////////////////
+
+POST / GET / PUT
+
+File: web-3.png
+
+1. POST -> Adding New Recipe
+
+User adds recipe
+
+Frontend sends POST
+
+Backend saves data
+
+Frontend updates page
+
+2. GET -> Viewing a Recipe
+
+User selects a recipe
+
+Frontend sends GET
+
+Backend fetches from database
+
+Frontend displays recipe
+
+3. PUT -> Editing a Recipe
+
+User edits recipe
+
+Frontend sends PUT
+
+Backend updates database
+
+////////////////////////
+
+Adding - Viewing - Editing
+
+File: web-4.png 
+
+Adding Flow:
+
+User clicks on Add Recipe button
+
+Frontend sends POST /recipes with recipe data
+
+Backend validates data
+
+Backend saves the recipe in the Database
+
+Database confirms save
+
+Backend sends success response
+
+Frontend updates the page with the new recipe
+
+
+Viewing Flow:
+
+User selects a recipe
+
+Frontend sends GET /recipes/:id
+
+Backend fetches the recipe from the Database
+
+Database returns the data
+
+Backend sends recipe details to frontend
+
+Frontend displays the recipe to the user
+
+
+Editing Flow:
+
+User clicks on Edit button
+
+Frontend shows editable form
+
+User updates the recipe
+
+Frontend sends PUT /recipes/:id
+
+Backend updates the recipe in the Database
+
+Database confirms update
+
+Backend sends success response
+
+Frontend shows the updated recipe
