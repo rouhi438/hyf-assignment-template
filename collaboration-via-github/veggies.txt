@@ -1,5 +1,7 @@
 Carrot
 Tomato
-Cucumber
+Broccoli
 Potato
 Onion
+Spinate
+Pepper
