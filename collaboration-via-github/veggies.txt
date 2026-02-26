@@ -1,7 +1,6 @@
 Carrot
 Tomato
-Broccoli
+Eggplant
 Potato
 Onion
-Spinate
-Pepper
+
