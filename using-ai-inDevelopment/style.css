@@ -1,0 +1,81 @@
+body {
+    font-family: 'montserrat', sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+header {
+    background-color: #222;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav {
+    margin-top: 0.5rem;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    text-align: center;
+}
+
+section {
+    margin-bottom: 3rem;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+}
+
+.skills-list li {
+    background: #ddd;
+    display: inline-block;
+    margin: 5px;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.project-card {
+    background: white;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
