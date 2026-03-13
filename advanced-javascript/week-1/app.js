@@ -44629,7 +44629,13 @@ const getAllBtn = document.querySelector(".get-all");
 const text = document.querySelector(".text");
 getAllBtn.addEventListener("click", () => {
   text.innerHTML = `Number of all movies in the list is : <strong>${movies.length}</strong>`;
+  movieCards.innerHTML = "";
+  movies.forEach((movie) => {
+    const card = createMovieCard(movie);
+    movieCards.appendChild(card);
+  });
 });
+
 //-- Short Title
 const movieCards = document.querySelector(".movie-cards");
 const shortBtn = document.querySelector(".short-btn");
@@ -44646,16 +44652,12 @@ shortBtn.addEventListener("click", () => {
 
 //-- Long Title
 const longTitle = document.querySelector(".long-title");
-const longTitleMovies = movies.filter((movie) => {
-  return movie.title.length > 50 && movie.title.length < 70; //character
-});
+const longTitleMovies = movies
+  .filter((movie) => movie.title.length > 20)
+  .map((movie) => movie.title);
 longTitle.addEventListener("click", () => {
-  movieCards.innerHTML = "";
   text.innerHTML = `Total Movies with long title is : <strong>${longTitleMovies.length}</strong>`;
-  longTitleMovies.forEach((movie) => {
-    const card = createMovieCard(movie);
-    movieCards.appendChild(card);
-  });
+  movieCards.textContent = `[ ${longTitleMovies.join(" // ")} ]`;
 });
 
 //-- number of movies in 1980 -1989
@@ -44702,7 +44704,7 @@ extraKey.addEventListener("click", () => {
 });
 //--movies rated higher than 6
 const higherRateMovies = movies
-  .filter((movie) => movie.rating >= 6)
+  .filter((movie) => movie.rating > 6)
   .map((movie) => movie.rating);
 const higherRate = document.querySelector(".higher");
 higherRate.addEventListener("click", () => {
@@ -44712,15 +44714,25 @@ higherRate.addEventListener("click", () => {
 
 //-- Count the total number of movies containing any of following keywords
 const keyWords = ["surfer", "alien", "benjamin"];
-const sumKeywords = movies.filter((movie) => {
-  const value = movie.title.toLowerCase();
-  return keyWords.some((word) => value.includes(word));
-}); //.length;
+const sumKeywords = movies.reduce((count, movie) => {
+  const subTitle = movie.title.toLowerCase();
+  keyWords.forEach((word) => {
+    if (subTitle.includes(word)) {
+      count++;
+    }
+  });
+  return count;
+}, 0);
+
+const showMovieWithKeywords = movies.filter((movie) => {
+  const withKeyword = movie.title.toLowerCase();
+  return keyWords.some((word) => withKeyword.includes(word));
+});
 const keywordsBtn = document.querySelector(".key-word");
 keywordsBtn.addEventListener("click", () => {
-  text.innerHTML = `Total number of movies containing of keywords: "Surfer", "Alien" and "Benjamin" is : <strong>${sumKeywords.length}</strong>`;
+  text.innerHTML = `Total number of movies containing of keywords: "Surfer", "Alien" and "Benjamin" is : <strong>${sumKeywords}</strong>`;
   movieCards.innerHTML = "";
-  sumKeywords.forEach((movie) => {
+  showMovieWithKeywords.forEach((movie) => {
     const card = createMovieCard(movie);
     movieCards.appendChild(card);
   });
@@ -44778,6 +44790,14 @@ const ratingCount = addNewKey.reduce(
 const rateCounter = document.querySelector(".rate-counter");
 rateCounter.addEventListener("click", () => {
   text.innerHTML = `The list contains <strong>${ratingCount.goodMovies}</strong> good movies, <strong>${ratingCount.averageMovies}</strong> average movies, and <strong>${ratingCount.badMovies}</strong> bad movies.`;
+  movieCards.innerHTML = "";
+  addNewKey.forEach((movie) => {
+    const card = createMovieCard(movie);
+    movieCards.appendChild(card);
+    const span = document.createElement("span");
+    span.textContent = `Tag : ${movie.tag}`;
+    card.appendChild(span);
+  });
 });
 
 //------Creating Card function-----------------------------------------
