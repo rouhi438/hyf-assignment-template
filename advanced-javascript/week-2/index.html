@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Advanced-JS</title>
+  </head>
+  <body>
+    <div class="task"><p class="text">Continue...</p></div>
+    <div class="task">
+      <p class="text-toLog"></p>
+    </div>
+    <div class="task">
+      <p class="lift"></p>
+    </div>
+    <div class="task">
+      <button type="button" class="btn">click Here</button>
+      <span class="show"></span>
+    </div>
+    <div class="task">
+      <p class="earth"></p>
+      <p class="saturn"></p>
+    </div>
+    <div class="task">
+      <button type="button" class="location">Log Location</button>
+      <p class="lat"></p>
+      <p class="lon"></p>
+    </div>
+
+    <div class="task">
+      <input type="number" name="" id="num" placeholder="Type the number" />
+      <p id="result"></p>
+      <button type="button" id="numBtn">click here</button>
+    </div>
+
+    <div class="task">
+      <button type="button" id="double-btn">Check double-click here</button>
+      <p id="double-text"></p>
+    </div>
+
+    <div class="task">
+      <button type="button" id="joke-btn">click to get Joke</button>
+      <p id="joke-text"></p>
+    </div>
+
+    <div class="game-container">
+      <div class="game-info">
+        <input type="number" name="" id="game-input" placeholder="Seconds" />
+        <span id="game-text">Getting Time here ...</span>
+        <button type="button" id="game-btn">Game Btn</button>
+      </div>
+      <div class="game-board">
+        <div class="left">
+          <p class="s-counter">S-counter...</p>
+          <canvas id="s-confetti"></canvas>
+        </div>
+        <div class="right">
+          <p class="l-counter">L-counter...</p>
+          <canvas id="l-confetti"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
