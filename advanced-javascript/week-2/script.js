@@ -10,21 +10,37 @@ document.addEventListener("DOMContentLoaded", () => {
 //nr-2
 function loadingAfterCall(delay, stringToLog) {
   setTimeout(() => {
-    console.log(`${stringToLog} loaded after ${delay} seconds!!`);
+    document.querySelector(".text-toLog").textContent =
+      `${stringToLog} loaded after ${delay} seconds!!`;
   }, delay * 1000);
 }
 loadingAfterCall(3, "Hello");
+loadingAfterCall(4, "Pizza pepperoni");
+loadingAfterCall(5, "Cafe latte");
+
+// LiftOff funny function
+const lift = document.querySelector(".lift");
+function liftOff(delay, string) {
+  setTimeout(() => {
+    lift.textContent = string;
+  }, delay * 1000);
+}
+liftOff(1, "5 🚀");
+liftOff(2, "4 🚀");
+liftOff(3, "3 🚀");
+liftOff(4, "2 🚀");
+liftOff(5, "1 🚀");
+liftOff(6, "Lift Off!");
 
 //nr-3
-
+function loadingAfterDelay(delay, stringToLog) {
+  setTimeout(() => {
+    const message = `${stringToLog} loaded after ${delay} seconds!!`;
+    document.querySelector(".show").textContent = message;
+    console.log(message);
+  }, delay * 1000);
+}
 document.querySelector(".btn").addEventListener("click", () => {
-  function loadingAfterDelay(delay, stringToLog) {
-    setTimeout(() => {
-      document.querySelector(".show").textContent =
-        `${stringToLog} loaded after ${delay} seconds!!`;
-      console.log(`${stringToLog} loaded after ${delay} seconds!!`);
-    }, delay * 1000);
-  }
   loadingAfterDelay(3, "Java Script");
 });
 
@@ -95,13 +111,17 @@ doubleBtn.addEventListener("click", () => {
   }
   lastClick = currentClickTime;
 });
+// checking double click on entire page
+document.addEventListener("dblclick", () => {
+  doubleText.textContent = " Double clicked!";
+});
 
 // nr-9
 const jokeBtn = document.getElementById("joke-btn");
 const jokeText = document.getElementById("joke-text");
 
 function jokeCreator(shouldTellFunnyJoke, logFunnyJoke, logBadJoke) {
-  if (shouldTellFunnyJoke === true) {
+  if (shouldTellFunnyJoke) {
     logFunnyJoke();
   } else {
     logBadJoke();
@@ -171,26 +191,28 @@ const lConfetti = confetti.create(lCanvas, { resize: true });
 
 let sCount = 0;
 let lCount = 0;
-let runningFlag = false;
+let isRunning = false;
+
+function checkWinner(player, confettiFunction, containerSel) {
+  gameText.textContent = `'${player}' player wins!`;
+  gameText.style.backgroundColor = "green";
+  confettiFunction({ particleCount: 150, spread: 100 });
+  document.querySelector(containerSel).classList.add("anime-style");
+}
+
 gameBtn.addEventListener("click", () => {
   const inputValue = Number(gameInput.value);
   sCount = 0;
   lCount = 0;
-  runningFlag = true;
+  isRunning = true;
   gameText.textContent = `Game running for ${inputValue} seconds...`;
 
   setTimeout(() => {
-    runningFlag = false;
+    isRunning = false;
     if (sCount > lCount) {
-      gameText.textContent = "'S' player wins!";
-      gameText.style.color = "green";
-      sConfetti({ particleCount: 150, spread: 100 });
-      document.querySelector(".left").classList.add("anime-style");
+      checkWinner("S", sConfetti, ".left");
     } else if (lCount > sCount) {
-      gameText.textContent = "'L' player wins!";
-      gameText.style.color = "green";
-      document.querySelector(".right").classList.add("anime-style");
-      lConfetti({ particleCount: 350, spread: 250 });
+      checkWinner("L", lConfetti, ".right");
     } else {
       gameText.textContent = `The game was tied!"`;
     }
@@ -198,7 +220,7 @@ gameBtn.addEventListener("click", () => {
 });
 
 document.addEventListener("keydown", (event) => {
-  if (!runningFlag) return;
+  if (!isRunning) return;
   const key = event.key.toLowerCase();
   if (key === "s") {
     sCount++;
