@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="convert-container">
+      <header>
+        <button type="button" class="convert-btn">Converter</button>
+        <button type="button" class="rate-btn">Rates</button>
+        <p class="timer"></p>
+      </header>
+      <div class="main">
+        <div class="convert">
+          <div class="first">
+            <select name="" id="currency-1"></select>
+            <input type="number" name="" id="from" placeholder="0" />
+          </div>
+          <button type="button" class="circle">
+            <span>
+              <i class="fa-solid fa-arrow-up"></i>
+              <i class="fa-solid fa-arrow-down"></i>
+            </span>
+          </button>
+          <div class="second">
+            <select name="" id="currency-2"></select>
+            <input type="number" name="" id="to" placeholder="0" />
+          </div>
+        </div>
+        <p class="description">
+          <strong>Updated 25 Mar 2026 at 15.17.</strong> <br />
+          The rates are HYF's average rates and are indicative only. Please note
+          that when you buy currency, you do so at HYF's selling rate, which is
+          higher than the average rate. So you will pay more for the currency
+          than you would if the average rate was used.
+        </p>
+      </div>
+      <div class="rate-container"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
