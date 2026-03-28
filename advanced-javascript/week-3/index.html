@@ -17,7 +17,7 @@
   <body>
     <div class="convert-container">
       <header>
-        <button type="button" class="convert-btn">Converter</button>
+        <button type="button" class="convert-btn active">Converter</button>
         <button type="button" class="rate-btn">Rates</button>
         <p class="timer"></p>
       </header>
@@ -25,7 +25,7 @@
         <div class="convert">
           <div class="first">
             <select name="" id="currency-1"></select>
-            <input type="number" name="" id="from" placeholder="0" />
+            <input type="number" name="" id="from" placeholder="0" min="0" />
           </div>
           <button type="button" class="circle">
             <span>
@@ -35,7 +35,7 @@
           </button>
           <div class="second">
             <select name="" id="currency-2"></select>
-            <input type="number" name="" id="to" placeholder="0" />
+            <input type="number" name="" id="to" placeholder="0" min="0" />
           </div>
         </div>
         <p class="description">

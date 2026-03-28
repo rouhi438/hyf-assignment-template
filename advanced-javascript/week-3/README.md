@@ -3,11 +3,14 @@
 This is a **Currency Converter** mini app inspired by the currency section of **Dansk Bank**, designed for a clean and modern user interface. The app includes **two main pages**:
 
 1. **Conversion Page**
+   ![Conversion Page](asset/convertPage.png)
    - Quickly convert currencies
    - Automatically updates when the amount or selected currency changes
    - Modern design with glass effect
 
 2. **Rates Page**
+
+   ![Rates Page](asset/ratePage.png)
    - Displays average currency rates
 
 ---

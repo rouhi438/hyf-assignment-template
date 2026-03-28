@@ -5,12 +5,11 @@ const currencyDropDown2 = document.getElementById("currency-2");
 let rates;
 let active = "from";
 
-async function getCurrenCies() {
+async function getCurrencies() {
   const url = "https://open.er-api.com/v6/latest/USD";
   const response = await fetch(url);
   const data = await response.json();
   rates = data.rates;
-  console.log(data);
   Object.entries(data.rates).forEach(([currency, value]) => {
     const option1 = document.createElement("option");
     option1.value = currency;
@@ -25,7 +24,7 @@ async function getCurrenCies() {
     currencyDropDown2.value = "DKK";
   });
 }
-getCurrenCies();
+getCurrencies();
 
 //--
 const inputFromValue = document.getElementById("from");
@@ -44,17 +43,17 @@ currencyDropDown1.addEventListener("change", () => convert());
 currencyDropDown2.addEventListener("change", () => convert());
 
 function convert() {
+  const currencyFromValue = currencyDropDown1.value;
+  const currencyToValue = currencyDropDown2.value;
+
+  const fromRate = rates[currencyFromValue];
+  const toRate = rates[currencyToValue];
   if (active === "from") {
     if (!inputFromValue.value) {
       inputToValue.value = "";
       return;
     }
     const currencyNumValue = Number(inputFromValue.value);
-    const currencyFromValue = currencyDropDown1.value;
-    const currencyToValue = currencyDropDown2.value;
-
-    const fromRate = rates[currencyFromValue];
-    const toRate = rates[currencyToValue];
 
     const result = (currencyNumValue / fromRate) * toRate;
     inputToValue.value = result.toFixed(2);
@@ -64,11 +63,6 @@ function convert() {
       return;
     }
     const currencyNumValue = Number(inputToValue.value);
-    const currencyToValue = currencyDropDown2.value;
-    const currencyFromValue = currencyDropDown1.value;
-
-    const fromRate = rates[currencyFromValue];
-    const toRate = rates[currencyToValue];
 
     const result = (currencyNumValue / toRate) * fromRate;
     inputFromValue.value = result.toFixed(2);
@@ -91,15 +85,12 @@ const ratesPageBtn = document.querySelector(".rate-btn");
 const ratePageContainer = document.querySelector(".rate-container");
 
 ratesPageBtn.addEventListener("click", () => {
-  ratesPageBtn.style.backgroundColor = "#4697ec";
-  ratesPageBtn.style.color = "#fff";
-  convertPageBtn.style.backgroundColor = "#eaeaea";
-  convertPageBtn.style.color = "black";
+  ratesPageBtn.classList.add("active");
+  convertPageBtn.classList.remove("active");
   document.querySelector(".main").classList.add("hidden");
   ratePageContainer.classList.remove("hidden");
   ratePageContainer.innerHTML = "";
   Object.entries(rates).forEach(([currency, value]) => {
-    console.log(rates);
     const rateDiv = document.createElement("div");
     rateDiv.className = "row";
     rateDiv.textContent = `${currency} --- ${value}`;
@@ -107,10 +98,8 @@ ratesPageBtn.addEventListener("click", () => {
   });
 });
 convertPageBtn.addEventListener("click", () => {
-  ratesPageBtn.style.backgroundColor = "#eaeaea";
-  ratesPageBtn.style.color = "black";
-  convertPageBtn.style.backgroundColor = " #4697ec";
-  convertPageBtn.style.color = "#fff";
+  convertPageBtn.classList.add("active");
+  ratesPageBtn.classList.remove("active");
   document.querySelector(".main").classList.remove("hidden");
   ratePageContainer.classList.add("hidden");
 });

@@ -41,22 +41,24 @@ header button,
     border: none;
     height: 22px;
     padding: 0 10px;
+    background-color: #eaeaea;
 }
 
 .rate-btn,
-.timer {
+.convert-btn {
     background-color: #eaeaea;
+    color: black;
+}
+
+.active {
+    background-color: #4697ec;
+    color: #fff;
 }
 
 .timer {
     font-size: 8px;
     text-align: center;
     padding-top: 2px;
-}
-
-.convert-btn {
-    background-color: #4697ec;
-    color: #fff;
 }
 
 .main {
