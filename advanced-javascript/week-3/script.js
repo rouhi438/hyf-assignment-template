@@ -39,8 +39,8 @@ inputToValue.addEventListener("input", () => {
   convert();
 });
 
-currencyDropDown1.addEventListener("change", () => convert());
-currencyDropDown2.addEventListener("change", () => convert());
+currencyDropDown1.addEventListener("change", convert);
+currencyDropDown2.addEventListener("change", convert);
 
 function convert() {
   const currencyFromValue = currencyDropDown1.value;
@@ -69,11 +69,11 @@ function convert() {
   }
 }
 //- swapBtn
-const moveBtn = document.querySelector(".circle");
-moveBtn.addEventListener("click", () => {
-  const moveCurrency = currencyDropDown1.value;
+const swapBtn = document.querySelector(".circle");
+swapBtn.addEventListener("click", () => {
+  const swapCurrency = currencyDropDown1.value;
   currencyDropDown1.value = currencyDropDown2.value;
-  currencyDropDown2.value = moveCurrency;
+  currencyDropDown2.value = swapCurrency;
 
   const moveInputValue = inputFromValue.value;
   inputFromValue.value = inputToValue.value;
