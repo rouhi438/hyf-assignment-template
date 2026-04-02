@@ -1,0 +1,54 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.app-container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.header {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+header input {
+    flex: 1;
+    min-width: 200px;
+    max-width: 400px;
+    padding: 15px;
+    outline: none;
+    cursor: pointer;
+}
+
+header input:focus {
+    border: 1.5px solid rgb(50, 120, 234);
+}
+
+header #send-btn {
+    padding: 15px 25px;
+    cursor: pointer;
+    outline: none;
+}
+
+header #send-btn:hover {
+    background-color: lightgreen;
+    border: 1.5px solid rgb(50, 120, 234);
+
+}
+
+#screens-container {
+    width: 100%;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(3, 1fr);
+}
