@@ -47,8 +47,23 @@ sendUrlBtn.addEventListener("click", async () => {
       },
     });
     const data = await res.json();
-    if (!data.ScreenshotUrl) throw new Error("No screenshot from API.");
+    if (!data.screenshotUrl) throw new Error("No screenshot from API.");
   } catch (err) {
     console.error(err);
   }
 });
+
+//-- api function
+
+async function saveToCrud(url, screenshotUrl) {
+  await fetch(crudApi, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ url, screenshot: screenshotUrl }),
+  });
+}
+
+async function loadFromCrud() {
+  const res = await fetch(crudApi);
+  return await res.json();
+}
