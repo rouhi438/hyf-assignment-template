@@ -27,7 +27,8 @@ class Screenshot {
 
 //-- generate Screenshot
 sendUrlBtn.addEventListener("click", async () => {
-  const url = urlInput.ariaValueMax.trim();
+  const url = urlInput.value.trim();
+  console.log(url);
   if (!url) {
     alert("Please inter a URL.");
     return;
@@ -47,6 +48,7 @@ sendUrlBtn.addEventListener("click", async () => {
       },
     });
     const data = await res.json();
+    console.log(data);
     if (!data.screenshotUrl) throw new Error("No screenshot from API.");
   } catch (err) {
     console.error(err);
@@ -63,7 +65,23 @@ async function saveToCrud(url, screenshotUrl) {
   });
 }
 
+//--
 async function loadFromCrud() {
   const res = await fetch(crudApi);
   return await res.json();
 }
+
+//-- render screenShots List
+async function renderList() {
+  try {
+    const items = loadFromCrud();
+    screensContainer.innerHTML = "";
+    for (let item of items) {
+      const shot = new Screenshot(item._id, item.url, item.screenshot);
+      shot.render(screensContainer);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+renderList();
