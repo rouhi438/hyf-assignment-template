@@ -8,16 +8,19 @@
   </head>
   <body>
     <div class="app-container">
-      <p class="title">WebShot Collector</p>
+      <h1 class="title">WebShot Collector</h1>
       <header>
-        <input
-          type="text"
-          id="url-input"
-          placeholder="https://example.examle"
-        />
-        <button type="button" id="send-btn">Send url</button>
+        <div class="form-holder">
+          <label for="url-input" class="url-label">Website URL</label>
+          <input
+            type="text"
+            id="url-input"
+            placeholder="https://example.example"
+          />
+        </div>
+        <button type="button" id="send-btn" class="send-btn">Send URL</button>
       </header>
-      <div id="screens-container"></div>
+      <div id="screens-container" class="screens-container"></div>
     </div>
     <script src="script.js" type="module"></script>
   </body>

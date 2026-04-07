@@ -14,16 +14,29 @@ class Screenshot {
   render(screensContainer) {
     const screenItem = document.createElement("div");
     screenItem.className = "screen-item";
-    screenItem.innerHTML = `
-        <img src="${this.imageUrl}" alt="Screenshot" />
-        <a href="${this.url}" target="_blank">${this.url}</a>
-        <div class="screen-footer">
-          <button type="button" class="fullscreen-btn">Full Screen</button>
-          <button type="button" class="delete-btn">Delete Screen</button>
-        </div>`;
 
-    const fullBtn = screenItem.querySelector(".fullscreen-btn");
-    const delBtn = screenItem.querySelector(".delete-btn");
+    const img = document.createElement("img");
+    img.src = this.imageUrl;
+    img.alt = "ScreenShot";
+
+    const link = document.createElement("a");
+    link.href = this.url;
+    link.target = "_blank";
+    link.className = "url";
+    link.textContent = this.url;
+
+    const footer = document.createElement("div");
+    footer.className = "screen-footer";
+
+    const delBtn = document.createElement("button");
+    delBtn.type = "button";
+    delBtn.className = "delete-btn";
+    delBtn.textContent = "Delete Screen";
+
+    const fullBtn = document.createElement("button");
+    fullBtn.type = "button";
+    fullBtn.className = "fullscreen-btn";
+    fullBtn.textContent = "Full Screen";
 
     delBtn.addEventListener("click", async () => {
       try {
@@ -37,6 +50,13 @@ class Screenshot {
     fullBtn.addEventListener("click", () => {
       window.open(this.imageUrl, "_blank");
     });
+
+    footer.appendChild(fullBtn);
+    footer.appendChild(delBtn);
+
+    screenItem.appendChild(img);
+    screenItem.appendChild(link);
+    screenItem.appendChild(footer);
 
     screensContainer.appendChild(screenItem);
   }
@@ -58,11 +78,6 @@ async function loadFromCrud() {
   return await res.json();
 }
 
-//--
-async function deleteFromCrud(id) {
-  await fetchWithError(`${crudApi}/${id}`, { method: "DELETE" });
-}
-
 //-- render screenShots List
 async function renderList() {
   try {
@@ -74,7 +89,6 @@ async function renderList() {
       const shot = new Screenshot(item._id, item.url, item.screenshot);
       shot.render(screensContainer, async (id) => {
         try {
-          await deleteFromCrud(id);
           await renderList();
         } catch (err) {
           handleError(err);
