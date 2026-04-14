@@ -15,6 +15,6 @@ export const RootLayout = () => {
       {/* Import and use the Footer component here. */}
     </div>
   );
-}
+};
 
 export default RootLayout;
