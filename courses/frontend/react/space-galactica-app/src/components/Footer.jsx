@@ -1,5 +1,7 @@
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./Footer.module.css";
+import { SocialMediaItem } from "./SocialMediaItem";
 
 export const Footer = () => {
   const { pathname } = useLocation();
@@ -17,13 +19,25 @@ export const Footer = () => {
       {/* 🧑🏽‍🚀 Task - Week 2 */}
       {/* Create a new list for the Pages. */}
       {/* We need to use the <Link /> component here. */}
-      {/* <div className={styles.pages}>
+      <div className={styles.pages}>
         <h3>Pages</h3>
         <ul>
-          <li> <Link/> </li>
-          ...
+          <li>
+            <Link to="/events" /> Events
+          </li>
+          <li>
+            <Link to="/cart" /> Cart
+          </li>
+          <li>
+            <Link to="/orders" />
+            Orders
+          </li>
+          <li>
+            <Link to="/login" />
+            Login
+          </li>
         </ul>
-      </div> */}
+      </div>
       {/* Docs for the Link: https://reactrouter.com/api/components/Link#link. */}
 
       {/* 🧑🏽‍🚀 Task - Week 1 */}
@@ -31,31 +45,26 @@ export const Footer = () => {
       <div className={styles.footerLinks}>
         <h3>Follow us</h3>
         <ul className={styles.footerList}>
-          <li>
-            <a href="https://facebook.com" target="_blank">
-              Facebook
-            </a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/rouhi438/" target="_blank">
-              Linkedin
-            </a>
-          </li>
-          <li>
-            <a href="https://instagram.com" target="_blank">
-              Instagram
-            </a>
-          </li>
-          <li>
-            <a href="https://tiktok.com" target="_blank">
-              Tiktok
-            </a>
-          </li>
-          <li>
-            <a href="https://google.com" target="_blank">
-              On the streets at night
-            </a>
-          </li>
+          <SocialMediaItem
+            url="https://facebook.com"
+            title="Facebook"
+            icon="/socialmedia/facebook.png"
+          />
+          <SocialMediaItem
+            url="https://instagram.com"
+            title="Instagram"
+            icon="/socialmedia/instagram.png"
+          />
+          <SocialMediaItem
+            url="https://tiktok.com"
+            title="TikTok"
+            icon="/socialmedia/tiktok.png"
+          />
+          <SocialMediaItem
+            url="https://linkedin.com"
+            title="LinkedIn"
+            icon="/socialmedia/linkedin.png"
+          />
           {/* 🧑🏽‍🚀 Task - Week 2 */}
           {/* Create a <SocialMediaItem /> component and replace all of the list items! */}
           {/* SocialMediaItem should accept the following props: url, title, icon. */}
