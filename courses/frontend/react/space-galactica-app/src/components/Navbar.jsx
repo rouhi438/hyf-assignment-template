@@ -1,6 +1,3 @@
-import classNames from "classnames";
-import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { Planet } from "../icons/Planet";
 import { Badge } from "./Badge";
 import styles from "./Navbar.module.css";
@@ -38,12 +35,14 @@ export const Navbar = () => {
           {/* 🧑🏽‍🚀 Task - Week 2 */}
           {/* Create a <NavItem> component, which accepts the following props: title, link, isActive.  */}
           {navbarItems.map((item, index) => {
-            <NavItem
-              key={item.link}
-              title={item.title}
-              link={item.link}
-              index={index + 1}
-            />;
+            return (
+              <NavItem
+                key={item.link}
+                title={item.title}
+                link={item.link}
+                index={index + 1}
+              />
+            );
           })}
           {/* 🧑🏽‍🚀 Task - Week 3 */}
           {/* Replace repeating content by using .map() and the previously created NavItem component. */}

@@ -8,6 +8,7 @@ export const metadata = {
 };
 
 export const RootLayout = () => {
+  console.log("LAYOUT RENDERED 🔥");
   return (
     <div className="inter">
       <Navbar />
