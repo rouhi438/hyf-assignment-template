@@ -6,6 +6,12 @@
   justify-content: space-between;
 }
 
+@media (max-width:580px) {
+  .footer {
+    flex-direction: column;
+  }
+}
+
 .hidden {
   display: none;
 }
