@@ -19,8 +19,6 @@ const navbarItems = [
 ];
 
 export const Navbar = () => {
-  // const currentPath = useLocation().pathname;
-
   return (
     <header className={styles.headerContainer}>
       <div className={styles.navbarLogo}>

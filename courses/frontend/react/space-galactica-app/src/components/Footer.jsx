@@ -2,7 +2,28 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styles from "./Footer.module.css";
 import { SocialMediaItem } from "./SocialMediaItem";
-
+const socialMediaLinks = [
+  {
+    url: "https://facebook.com",
+    title: "Facebook",
+    icon: "/socialmedia/facebook.png",
+  },
+  {
+    url: "https://instagram.com",
+    title: "Instagram",
+    icon: "/socialmedia/instagram.png",
+  },
+  {
+    url: "https://tiktok.com",
+    title: "TikTok",
+    icon: "/socialmedia/tiktok.png",
+  },
+  {
+    url: "https://linkedin.com",
+    title: "LinkedIn",
+    icon: "/socialmedia/linkedin.png",
+  },
+];
 export const Footer = () => {
   const { pathname } = useLocation();
 
@@ -23,18 +44,16 @@ export const Footer = () => {
         <h3>Pages</h3>
         <ul>
           <li>
-            <Link to="/events" /> Events
+            <Link to="/events"> Events </Link>
           </li>
           <li>
-            <Link to="/cart" /> Cart
+            <Link to="/cart"> Cart</Link>
           </li>
           <li>
-            <Link to="/orders" />
-            Orders
+            <Link to="/orders">Orders</Link>
           </li>
           <li>
-            <Link to="/login" />
-            Login
+            <Link to="/login">Login </Link>
           </li>
         </ul>
       </div>
@@ -45,26 +64,14 @@ export const Footer = () => {
       <div className={styles.footerLinks}>
         <h3>Follow us</h3>
         <ul className={styles.footerList}>
-          <SocialMediaItem
-            url="https://facebook.com"
-            title="Facebook"
-            icon="/socialmedia/facebook.png"
-          />
-          <SocialMediaItem
-            url="https://instagram.com"
-            title="Instagram"
-            icon="/socialmedia/instagram.png"
-          />
-          <SocialMediaItem
-            url="https://tiktok.com"
-            title="TikTok"
-            icon="/socialmedia/tiktok.png"
-          />
-          <SocialMediaItem
-            url="https://linkedin.com"
-            title="LinkedIn"
-            icon="/socialmedia/linkedin.png"
-          />
+          {socialMediaLinks.map((social) => (
+            <SocialMediaItem
+              key={social.title}
+              url={social.url}
+              title={social.title}
+              icon={social.icon}
+            />
+          ))}
           {/* 🧑🏽‍🚀 Task - Week 2 */}
           {/* Create a <SocialMediaItem /> component and replace all of the list items! */}
           {/* SocialMediaItem should accept the following props: url, title, icon. */}

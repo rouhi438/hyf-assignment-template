@@ -5,6 +5,38 @@ const OurCrew = () => {
   // Use the descriptions provided in /src/pages/AboutUsPage/README.md.
   // Use the pictures from /public/crew.
   // Some inspiration ideas can be found in /data/inspiration_about_us.
+  const crewMembers = [
+    {
+      name: "Captain Sarah Vega",
+      role: "Captain",
+      description:
+        "A former NASA astronaut with over 15 years of experience, Captain Vega leads our missions with unparalleled expertise and a passion for space exploration.",
+    },
+    {
+      name: "Dr. Leo Redding",
+      role: "Chief Astrophysicist",
+      description:
+        "A renowned scientist who has contributed to major space discoveries. He ensures that every journey is as educational as it is exhilarating.",
+    },
+    {
+      name: "Chief Engineer Hana Lee",
+      role: "Chief Engineer",
+      description:
+        "Responsible for the state-of-the-art technology that powers our spacecraft. Her innovation ensures travelers are always in safe hands.",
+    },
+    {
+      name: "Mission Specialist Alex Santos",
+      role: "Mission Specialist",
+      description:
+        "Ensures every aspect of the journey runs smoothly. With a background in science and adventure tourism, Alex is the perfect guide.",
+    },
+    {
+      name: "Crew Member Maya Patel",
+      role: "Crew Member",
+      description:
+        "Brings technical skills and customer service experience to make sure every traveler has an unforgettable experience.",
+    },
+  ];
   return (
     <section className={styles.crewSection}>
       <div className={styles.content}>
@@ -14,38 +46,12 @@ const OurCrew = () => {
           a common goal: to make space travel accessible and exciting for all.
         </p>
         <ul>
-          <li>
-            <strong>- Captain Sarah Vega: </strong> <br />A former NASA
-            astronaut with over 15 years of experience, Captain Vega leads our
-            missions with unparalleled expertise and a passion for space
-            exploration.
-          </li>
-          <li>
-            <strong>- Dr. Leo Redding: </strong> <br />
-            Our chief astrophysicist, Dr. Redding, is a renowned scientist who
-            has contributed to major space discoveries. He ensures that every
-            journey is as educational as it is exhilarating.
-          </li>
-          <li>
-            <strong>- Chief Engineer Hana Lee: </strong>
-            <br /> With her extensive background in aerospace engineering, Hana
-            Lee is responsible for the state-of-the-art technology that powers
-            our spacecraft. Her innovation ensures that our travelers are always
-            in safe hands.
-          </li>
-          <li>
-            <strong>- Mission Specialist Alex Santos: </strong>
-            <br /> As a mission specialist, Alex’s job is to ensure that every
-            aspect of the journey runs smoothly. With a background in both
-            science and adventure tourism, Alex is the perfect guide for our
-            space travelers.
-          </li>
-          <li>
-            <strong>- Crew Member Maya Patel:</strong> <br />
-            Maya brings a unique blend of technical skills and customer service
-            experience to the team. She’s always ready to assist with any needs
-            and to make sure every traveler has an unforgettable experience.
-          </li>
+          {crewMembers.map((member) => (
+            <li key={member.name}>
+              <h3>{member.name}</h3>
+              <p>{member.description}</p>
+            </li>
+          ))}
         </ul>
       </div>
     </section>
