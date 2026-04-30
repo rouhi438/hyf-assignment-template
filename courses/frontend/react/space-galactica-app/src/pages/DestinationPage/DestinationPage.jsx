@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./DestinationPage.module.css";
 import { PlanetCard } from "./PlanetCard";
+import { AddWishlistItem } from "./AddWishlistItem";
 
 // 🧑🏽‍🚀 Task - Week 2
 // Move this to its own file in this folder.
@@ -47,6 +48,11 @@ export const Destinations = () => {
     // 🧑🏽‍🚀 Task - Week 2
     // Remove the planet from the planets wishlist state.
   };
+  const handleAddWishlistItem = (newItem) => {
+    if (!isPlanetInWishlist(newItem.name)) {
+      setPlanetsWishlist((oldState) => [...oldState, newItem]);
+    }
+  };
   const planets = [
     {
       name: "Europa",
@@ -87,6 +93,17 @@ export const Destinations = () => {
           ) : (
             <p>You have {planetsWishlist.length} planets in your wishlist</p>
           )}
+          <AddWishlistItem onAddWishlistItem={handleAddWishlistItem} />
+          <h3>Your current wishlist</h3>
+          <div className={styles.wishlistList}>
+            {planetsWishlist.map((item) => (
+              <PlanetsWishlistItem
+                key={item.name}
+                {...item}
+                onRemove={() => removePlanetFromWishlist(item.name)}
+              />
+            ))}
+          </div>
           {/* 🧑🏽‍🚀 Use a variable to display the number of wishlist planets:  */}
 
           {/* 🧑🏽‍🚀 Task - Week 3 */}
