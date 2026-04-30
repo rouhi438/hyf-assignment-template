@@ -7,6 +7,18 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     server: {
       port: env.PORT,
+      proxy: {
+        '/api': {
+          target: 'https://api.nasa.gov',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, '')
+        },
+        '/apod-media': {
+          target: 'https://apod.nasa.gov',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/apod-media/, '')
+        }
+      }
     },
   };
 });
