@@ -59,7 +59,7 @@
 
 .pages ul li {
   list-style-type: none;
-  margin: 8px 0;
+  margin: 9px 0;
   cursor: pointer;
 }
 
@@ -67,4 +67,10 @@
   text-decoration: underline;
   text-underline-offset: 4px;
   transition: all 0.3s;
+}
+
+.footerItem a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }

@@ -16,7 +16,7 @@ const socialMediaLinks = [
   {
     url: "https://tiktok.com",
     title: "TikTok",
-    icon: "/socialmedia/tiktok.png",
+    icon: "/socialmedia/tik-tok.png",
   },
   {
     url: "https://linkedin.com",
