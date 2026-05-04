@@ -2,6 +2,8 @@ import { Planet } from "../icons/Planet";
 import { Badge } from "./Badge";
 import styles from "./Navbar.module.css";
 import { NavItem } from "./NavItem";
+import { useWishlist } from "../contexts/WishlistContext";
+import { Link } from "react-router-dom";
 
 const navbarItems = [
   {
@@ -19,12 +21,13 @@ const navbarItems = [
 ];
 
 export const Navbar = () => {
+  const { wishlistCount } = useWishlist();
   return (
     <header className={styles.headerContainer}>
       <div className={styles.navbarLogo}>
-        <a href="/">
+        <Link to="/">
           <img src="/shared/logo.svg" alt="" /> GALACTICA
-        </a>
+        </Link>
       </div>
       <div className={styles.decorativeLine} />
       <nav className={styles.navbar}>
@@ -48,7 +51,7 @@ export const Navbar = () => {
         </ul>
         {/* 🧑🏽‍🚀 Task - Week 4 - part 3 */}
         {/* Take the count of the planets wishlist from the context and display it in the Badge. */}
-        <Badge count={0}>
+        <Badge count={wishlistCount}>
           <Planet color="white" />
         </Badge>
       </nav>
