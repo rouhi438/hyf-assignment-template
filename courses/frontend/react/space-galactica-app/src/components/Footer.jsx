@@ -16,7 +16,7 @@ const socialMediaLinks = [
   {
     url: "https://tiktok.com",
     title: "TikTok",
-    icon: "/socialmedia/tiktok.png",
+    icon: "/socialmedia/tik-tok.png",
   },
   {
     url: "https://linkedin.com",
@@ -44,16 +44,16 @@ export const Footer = () => {
         <h3>Pages</h3>
         <ul>
           <li>
-            <Link to="/events"> Events </Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/cart"> Cart</Link>
+            <Link to="/about_us">About Us</Link>
           </li>
           <li>
-            <Link to="/orders">Orders</Link>
+            <Link to="/destination">Destination</Link>
           </li>
           <li>
-            <Link to="/login">Login </Link>
+            <Link to="/nasa_collaboration">NASA Collaboration</Link>
           </li>
         </ul>
       </div>
