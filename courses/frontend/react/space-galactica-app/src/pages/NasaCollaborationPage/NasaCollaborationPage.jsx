@@ -63,7 +63,9 @@ export const NasaCollaboration = () => {
                   className={styles.nasaPicOfTheDayImg}
                 />
               )}
-              <p>{dailyImg.explanation}</p>
+              <p className={styles.cardDescription}>
+                {dailyImg.explanation}
+              </p>
             </>
           ) : (
             <p>Loading astronomy picture...</p>

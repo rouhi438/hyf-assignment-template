@@ -17,6 +17,11 @@
   border-radius: 10px;
 }
 
+.valueCard:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease;
+}
+
 /*--ourCrew--*/
 .crewSection {
   background-image: url("/crew/background-crew-desktop.jpg");
