@@ -13,6 +13,16 @@
   z-index: 10;
 }
 
+@media (max-width:900px) {
+  .headerContainer {
+    flex-direction: column;
+  }
+
+  .navbar {
+    font-size: 12px;
+  }
+}
+
 .decorativeLine {
   height: 0.1px;
   width: 30vw;
@@ -71,7 +81,8 @@
   letter-spacing: 1px;
 }
 
-.navbarLinks:hover, .isLinkActive {
+.navbarLinks:hover,
+.isLinkActive {
   border-block-end: var(--spacing-04) solid var(--border-color);
   margin-block-end: -4px;
 }

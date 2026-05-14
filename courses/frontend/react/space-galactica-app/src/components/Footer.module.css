@@ -6,6 +6,12 @@
   justify-content: space-between;
 }
 
+@media (max-width:580px) {
+  .footer {
+    flex-direction: column;
+  }
+}
+
 .hidden {
   display: none;
 }
@@ -48,5 +54,17 @@
 
 .footerList li:hover {
   text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.pages ul li {
+  list-style-type: none;
+  margin: 8px 0;
+  cursor: pointer;
+}
+
+.pages ul li:hover {
+  text-decoration: underline;
   text-underline-offset: 4px;
+  transition: all 0.3s;
 }

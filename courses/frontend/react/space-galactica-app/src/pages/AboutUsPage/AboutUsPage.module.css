@@ -78,6 +78,7 @@ p {
   max-width: 60%;
 }
 
+
 .content ul li strong {
   display: inline-block;
 }
@@ -128,6 +129,4 @@ p {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px
   }
-
-  ;
 }
