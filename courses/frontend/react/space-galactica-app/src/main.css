@@ -14,30 +14,24 @@
   --border-color: #eee;
   --card-bg-color: rgba(100, 100, 100, 0.3);
 
-  --primary-glow: conic-gradient(
-    from 180deg at 50% 50%,
-    #16abff33 0deg,
-    #0885ff33 55deg,
-    #54d6ff33 120deg,
-    #0071ff33 160deg,
-    transparent 360deg
-  );
-  --secondary-glow: radial-gradient(
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
+  --primary-glow: conic-gradient(from 180deg at 50% 50%,
+      #16abff33 0deg,
+      #0885ff33 55deg,
+      #54d6ff33 120deg,
+      #0071ff33 160deg,
+      transparent 360deg);
+  --secondary-glow: radial-gradient(rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0));
 
   --tile-start-rgb: 239, 245, 249;
   --tile-end-rgb: 228, 232, 233;
-  --tile-border: conic-gradient(
-    #00000080,
-    #00000040,
-    #00000030,
-    #00000020,
-    #00000010,
-    #00000010,
-    #00000080
-  );
+  --tile-border: conic-gradient(#00000080,
+      #00000040,
+      #00000030,
+      #00000020,
+      #00000010,
+      #00000010,
+      #00000080);
 
   --callout-rgb: 238, 240, 241;
   --callout-border-rgb: 172, 175, 176;
@@ -90,12 +84,9 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 a {
@@ -103,12 +94,19 @@ a {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-block-end: var(--spacing-08);
   color: var(--primary-text-color);
 }
 
-p, b, i {
+p,
+b,
+i {
   margin-block-end: var(--spacing-08);
 }
 
@@ -136,6 +134,9 @@ button {
   color: #fff;
 }
 
+.mainContent h1 {
+  margin-left: 20px;
+}
 
 .card {
   position: relative;
@@ -154,7 +155,7 @@ button {
   backdrop-filter: blur(10px);
 }
 
-.card > * {
+.card>* {
   position: relative;
   z-index: 2;
 }
@@ -220,7 +221,7 @@ button {
   z-index: -1;
 }
 
-.fullBGpicture > main {
+.fullBGpicture>main {
   overflow: auto;
 }
 

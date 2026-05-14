@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import styles from './Footer.module.css';
+import styles from "./Footer.module.css";
 
 export const Footer = () => {
   const { pathname } = useLocation();
@@ -8,7 +8,10 @@ export const Footer = () => {
     <footer className={pathname !== "/" ? styles.footer : styles.hidden}>
       <div className={styles.footerDescription}>
         <h3>Galactica</h3>
-        <p>Explore the universe and beyond. Your journey to the stars starts here.</p>
+        <p>
+          Explore the universe and beyond. Your journey to the stars starts
+          here.
+        </p>
         <p>&copy; 2024 Galactica. All rights reserved.</p>
       </div>
       {/* 🧑🏽‍🚀 Task - Week 2 */}
@@ -29,16 +32,29 @@ export const Footer = () => {
         <h3>Follow us</h3>
         <ul className={styles.footerList}>
           <li>
-            <a href="https://facebook.com">Facebook</a>
+            <a href="https://facebook.com" target="_blank">
+              Facebook
+            </a>
           </li>
           <li>
-            <a href="https://instagram.com">Instagram</a>
+            <a href="https://www.linkedin.com/in/rouhi438/" target="_blank">
+              Linkedin
+            </a>
           </li>
           <li>
-            <a href="https://tiktok.com">Tiktok</a>
+            <a href="https://instagram.com" target="_blank">
+              Instagram
+            </a>
           </li>
           <li>
-            <a href="https://google.com">On the streets at night</a>
+            <a href="https://tiktok.com" target="_blank">
+              Tiktok
+            </a>
+          </li>
+          <li>
+            <a href="https://google.com" target="_blank">
+              On the streets at night
+            </a>
           </li>
           {/* 🧑🏽‍🚀 Task - Week 2 */}
           {/* Create a <SocialMediaItem /> component and replace all of the list items! */}
@@ -48,4 +64,4 @@ export const Footer = () => {
       </div>
     </footer>
   );
-}
+};
