@@ -5,21 +5,16 @@
 }
 
 .planetCard {
-  border: 1px solid var(--border-color);
+  border: 1px solid #ccc;
   max-width: 70%;
-  margin: var(--spacing-20) 0;
+  margin: 20px 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-08);
-  gap: var(--spacing-08);
+  padding: 20px;
+  gap: 16px;
 }
 
-@media (max-width:780px) {
-  .planetCard {
-    flex-direction: column;
-  }
-}
 
 .planetCard:nth-child(odd) {
   margin-inline-start: auto;
@@ -30,7 +25,7 @@
 }
 
 .planetDescription {
-  padding-block-start: var(--spacing-04);
+  padding-block-start: 20px;
   margin-block-end: auto;
 }
 
@@ -38,47 +33,48 @@
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  margin: 0 var(--spacing-16);
+  margin: 0 16px;
 }
 
 .wishlistItem {
-  border: 1px solid var(--border-color);
+  border: 1px solid #ccc;
   width: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-16);
-  margin: var(--spacing-20);
-  padding: var(--spacing-20);
+  gap: 16px;
+  margin: 20px;
+  padding: 20px;
 }
 
 .wishlistItemThumbnail {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  margin: 0 var(--spacing-16);
+  margin: 0 16px;
 }
 
 .wishlistList {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: var(--spacing-16) 0;
+  margin: 16px 0;
 }
 
 .addWishlistItem {
-  border: 1px solid var(--border-color);
-  width: 200px;
+  border: 1px solid #ccc;
+  width: 270px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   align-items: stretch;
-  margin: var(--spacing-20);
-  padding: var(--spacing-20);
+  gap: 10px;
+  margin: 20px;
+  padding: 20px;
 }
 
 .addWishlistItem p {
-  margin-block-end: var(--spacing-20);
+  margin-block-end: 20px;
 }
 
 .addWishlistItem label {
@@ -89,5 +85,18 @@
 .addWishlistItem input,
 .addWishlistItem select {
   height: 30px;
-  margin-block-end: var(--spacing-20);
+  margin-block-end: 20px;
+}
+
+.planetCard:hover,
+.addWishlistItem:hover,
+.wishlistItem:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease;
+}
+
+@media (max-width:780px) {
+  .planetCard {
+    flex-direction: column;
+  }
 }
